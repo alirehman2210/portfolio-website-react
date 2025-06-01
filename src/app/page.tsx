@@ -1,103 +1,324 @@
-import Image from "next/image";
+'use client';
+
+import Image from 'next/image';
+import { motion } from 'framer-motion';
+import {
+  Box,
+  Container,
+  Heading,
+  Text,
+  Stack,
+  Link,
+  SimpleGrid,
+  Flex,
+  Button,
+} from '@chakra-ui/react';
+import Navigation from '@/components/Navigation';
+
+const fadeIn = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0 },
+};
 
 export default function Home() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+    <Box bg="#F9FAFB" minH="100vh">
+      <Navigation />
+      
+      <Container maxW="6xl" py={{ base: 10, md: 12 }}>
+        <Stack spacing={{ base: 6, md: 8 }} align="stretch">
+          {/* Hero Section */}
+          <Box 
+            as="section" 
+            bg="white" 
+            p={{ base: 6, md: 8 }} 
+            rounded="2xl" 
+            shadow="sm"
+            borderWidth="1px"
+            borderColor="gray.100"
+            position="relative"
+            _before={{
+              content: '""',
+              position: "absolute",
+              top: 0,
+              left: 0,
+              right: 0,
+              height: "4px",
+              background: "linear-gradient(to right, #E2E8F0, #CBD5E0)",
+              borderTopRadius: "2xl"
+            }}
+          >
+            <Stack spacing={{ base: 6, md: 8 }}>
+              {/* Top Section: Title, Subtitle, and Photo */}
+              <Flex 
+                direction={{ base: 'column', md: 'row' }}
+                gap={{ base: 6, md: 8 }}
+                align={{ base: 'center', md: 'start' }}
+              >
+                {/* Left: Title and Subtitle */}
+                <Stack spacing={4} flex="1">
+                  <Heading 
+                    as="h1" 
+                    size="2xl" 
+                    lineHeight="1.2"
+                    fontWeight="bold"
+                    textAlign={{ base: "center", md: "left" }}
+                  >
+                    Product Manager & Strategic Thinker
+                  </Heading>
+                  <Text 
+                    fontSize={{ base: "lg", md: "xl" }}
+                    color="gray.600"
+                    textAlign={{ base: "center", md: "left" }}
+                  >
+                    Experienced Product Manager with a passion for building user-centric solutions 
+                    and driving product strategy through data-driven decisions.
+                  </Text>
+                </Stack>
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+                {/* Right: Profile Photo */}
+                <Box 
+                  position="relative" 
+                  width={{ base: "200px", md: "220px" }}
+                  height={{ base: "200px", md: "220px" }}
+                  flexShrink={0}
+                >
+                  <Image
+                    src="/travels/2025/french-riviera/pictureb.jpeg"
+                    alt="Ali Rehman"
+                    fill
+                    style={{ objectFit: 'cover', borderRadius: '12px' }}
+                    priority
+                    quality={95}
+                  />
+                </Box>
+              </Flex>
+
+              {/* Social Buttons */}
+              <Stack 
+                direction={{ base: "column", sm: "row" }}
+                spacing={{ base: 3, sm: 4 }}
+                justify={{ base: "center", md: "flex-start" }}
+                w="full"
+              >
+                <Link href="https://github.com/alirehman2210" isExternal>
+                  <Button 
+                    variant="outline" 
+                    size={{ base: "md", md: "lg" }}
+                    width={{ base: "full", sm: "auto" }}
+                    cursor="pointer"
+                    _hover={{ 
+                      bg: "blue.50",
+                      transform: "translateY(-2px)",
+                      shadow: "md",
+                      borderColor: "blue.400",
+                      color: "blue.600"
+                    }}
+                    transition="all 0.2s ease-in-out"
+                  >
+                    GitHub
+                  </Button>
+                </Link>
+                <Link href="https://www.linkedin.com/in/ali-r-b3888b207/" isExternal>
+                  <Button 
+                    variant="outline"
+                    size={{ base: "md", md: "lg" }}
+                    width={{ base: "full", sm: "auto" }}
+                    cursor="pointer"
+                    _hover={{ 
+                      bg: "blue.50",
+                      transform: "translateY(-2px)",
+                      shadow: "md",
+                      borderColor: "blue.400",
+                      color: "blue.600"
+                    }}
+                    transition="all 0.2s ease-in-out"
+                  >
+                    LinkedIn
+                  </Button>
+                </Link>
+                <Link href="mailto:alirehman2210@gmail.com" width={{ base: "full", sm: "auto" }}>
+                  <Button 
+                    variant="outline"
+                    size={{ base: "md", md: "lg" }}
+                    width="full"
+                    cursor="pointer"
+                    _hover={{ 
+                      bg: "blue.50",
+                      transform: "translateY(-2px)",
+                      shadow: "md",
+                      borderColor: "blue.400",
+                      color: "blue.600"
+                    }}
+                    transition="all 0.2s ease-in-out"
+                  >
+                    Email
+                  </Button>
+                </Link>
+              </Stack>
+
+              {/* AI Work Description */}
+              <Text 
+                fontSize={{ base: "md", md: "lg" }}
+                color="gray.700" 
+                lineHeight="tall"
+                textAlign={{ base: "center", md: "left" }}
+              >
+                Currently developing and implementing AI-enhanced cybersecurity solutions including automating workflows, 
+                streamlining incident management, and building internal tools that empower security analysts for faster 
+                and smarter response under high-pressure situations.
+              </Text>
+
+              {/* Impact Metrics */}
+              <SimpleGrid 
+                columns={{ base: 1, sm: 3 }} 
+                spacing={4}
+                pt={{ base: 2, md: 4 }}
+              >
+                {[
+                  { number: "12+", label: "Products Launched" },
+                  { number: "25+", label: "Strategic Initiatives Supported" },
+                  { number: "3", label: "Products Shipped Across 3 Continents" }
+                ].map((metric, index) => (
+                  <Box
+                    key={index}
+                    p={{ base: 4, md: 6 }}
+                    borderWidth="1px"
+                    borderRadius="xl"
+                    textAlign="center"
+                    bg="white"
+                    _hover={{
+                      transform: "translateY(-2px)",
+                      shadow: "lg",
+                      borderColor: "gray.300"
+                    }}
+                    transition="all 0.2s"
+                  >
+                    <Text fontSize={{ base: "2xl", md: "3xl" }} fontWeight="bold" mb={2}>
+                      {metric.number}
+                    </Text>
+                    <Text color="gray.600" fontSize={{ base: "sm", md: "md" }}>{metric.label}</Text>
+                  </Box>
+                ))}
+              </SimpleGrid>
+            </Stack>
+          </Box>
+
+          {/* Core Skills & Technologies Section */}
+          <Box 
+            as="section" 
+            bg="#F8FAFC"
+            p={{ base: 6, md: 8 }}
+            rounded="2xl" 
+            shadow="sm"
+            borderWidth="1px"
+            borderColor="gray.100"
+            position="relative"
+            _before={{
+              content: '""',
+              position: "absolute",
+              top: 0,
+              left: 0,
+              right: 0,
+              height: "4px",
+              background: "linear-gradient(to right, #E2E8F0, #CBD5E0)",
+              borderTopRadius: "2xl"
+            }}
           >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+            <Stack spacing={{ base: 8, md: 10 }} align="center">
+              <Heading as="h2" size="xl" textAlign="center">
+                Core Skills & Technologies
+              </Heading>
+              <SimpleGrid 
+                columns={{ base: 2, md: 3, lg: 4 }} 
+                spacing={{ base: 4, md: 6 }}
+                w="full"
+              >
+                {[
+                  { name: 'Product Strategy', icon: '🎯', color: '#EBF8FF' },
+                  { name: 'User Research', icon: '🔍', color: '#F0FFF4' },
+                  { name: 'Data Analysis', icon: '📊', color: '#FAF5FF' },
+                  { name: 'Agile Management', icon: '🔄', color: '#FFF5F5' },
+                  { name: 'Stakeholder Communication', icon: '🤝', color: '#FFFAF0' },
+                  { name: 'Technical Leadership', icon: '💡', color: '#F0F5FF' },
+                  { name: 'AWS', icon: '☁️', color: '#EDF2F7' },
+                  { name: 'Experimentation & A/B Testing', icon: '🧪', color: '#F7FAFC' },
+                  { name: 'Prioritization & Tradeoffs', icon: '🔄', color: '#EDF2F7' },
+                  { name: 'Confluence', icon: '📝', color: '#F7FAFC' },
+                  { name: 'Cloud Engineering', icon: '🌐', color: '#EBF8FF' },
+                  { name: 'AI', icon: '🧠', color: '#F0FFF4' },
+                ].map((skill) => (
+                  <Box
+                    key={skill.name}
+                    p={{ base: 4, md: 6 }}
+                    bg="white"
+                    borderRadius="xl"
+                    borderWidth="1px"
+                    borderColor="gray.200"
+                    transition="all 0.3s ease"
+                    _hover={{
+                      transform: "translateY(-2px)",
+                      shadow: "md",
+                      borderColor: "gray.300",
+                      bg: skill.color
+                    }}
+                    textAlign="center"
+                  >
+                    <Text fontSize={{ base: "xl", md: "2xl" }} mb={2}>{skill.icon}</Text>
+                    <Text fontWeight="medium" fontSize={{ base: "sm", md: "md" }}>{skill.name}</Text>
+                  </Box>
+                ))}
+              </SimpleGrid>
+            </Stack>
+          </Box>
+
+          {/* Quote Section */}
+          <Box 
+            as="section" 
+            bg="white" 
+            py={{ base: 10, md: 12 }}
+            px={{ base: 6, md: 8 }}
+            rounded="2xl" 
+            shadow="sm"
+            borderWidth="1px"
+            borderColor="gray.100"
+            textAlign="center"
+            position="relative"
+            _before={{
+              content: '""',
+              position: "absolute",
+              top: 0,
+              left: 0,
+              right: 0,
+              height: "4px",
+              background: "linear-gradient(to right, #E2E8F0, #CBD5E0)",
+              borderTopRadius: "2xl"
+            }}
           >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+            <Text
+              fontSize={{ base: "xl", md: "2xl", lg: "3xl" }}
+              fontStyle="italic"
+              color="gray.700"
+              letterSpacing="wide"
+              lineHeight="tall"
+              fontWeight="medium"
+              maxW="3xl"
+              mx="auto"
+            >
+              &ldquo;Knowledge without action is wastefulness, and action without knowledge is foolishness.&rdquo;
+            </Text>
+          </Box>
+        </Stack>
+      </Container>
+
+      {/* Footer */}
+      <Box as="footer" borderTopWidth="1px" borderColor="gray.200" bg="white" py={6}>
+        <Container maxW="4xl">
+          <Text color="gray.500" fontSize="sm" textAlign="center">
+            © {new Date().getFullYear()} Ali Rehman. All rights reserved.
+          </Text>
+        </Container>
+      </Box>
+    </Box>
   );
 }
