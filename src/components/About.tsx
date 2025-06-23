@@ -10,20 +10,25 @@ import {
   VStack,
   Tag,
   useColorModeValue,
+  // Badge, // Commented out - unused
+  // Divider, // Commented out - unused
 } from '@chakra-ui/react';
+// import { motion } from 'framer-motion';
 
 const About = () => {
   const skills = [
-    'AI & Automation Enablement',
-    'User Research & Behavioral Analytics',
-    'Agile Delivery & Roadmap Ownership',
-    'Stakeholder Influence & Cross-Team Alignment',
-    'Security Product Strategy (Cloud & Infra)',
-    'Go-to-Market Planning for Internal Tools',
-    'API Design & Platform Thinking',
-    'Operational Efficiency & Cost Optimization',
-    'Vertical SaaS Strategy',
-    'Process Mapping & Systems Thinking'
+    'AI & Automation',
+    'Data Analysis',
+    'Product Metrics',
+    'Stakeholder Alignment',
+    'Cloud & Security Strategy',
+    'Go-to-Market (Internal Tools)',
+    'API & Platform Thinking',
+    'Product Growth',
+    'A/B Testing & Experiments',
+    'Systems Thinking',
+    'Agile Roadmapping',
+    'Developer Experience (DevEx)',
   ];
 
   const bgColor = useColorModeValue('gray.50', 'gray.900');
@@ -42,19 +47,19 @@ const About = () => {
           <Box bg={cardBg} rounded="2xl" shadow="lg" p={8} w="full">
             <VStack spacing={6} align="stretch">
               <Text fontSize="lg">
-                Avid reader, spontaneous traveler, and fitness enthusiast — I enjoy deep conversations, last-minute adventures, and the kind of books that change how you see the world. Whether I'm diving into a new city or a new book, I bring curiosity, energy, and intention to everything I do.
+                Avid reader, spontaneous traveler, and fitness enthusiast that enjoys deep conversations, last-minute adventures, and the kind of books that change how you see the world. Whether I&apos;m diving into a new city or a new book, I try to bring curiosity, energy, and intention to everything I do.
               </Text>
               
               <Text fontSize="lg">
-                Professionally, I'm a Product Manager who thrives at the intersection of strategy, systems thinking, and user empathy. I specialize in leading cross-functional teams to build and scale products that solve real problems — from automating cybersecurity workflows to improving infrastructure for high-growth environments. I love connecting the dots between business goals and user needs, especially when the path forward is unclear or complex.
+                Professionally, I'm a Product Manager who thrives at the intersection of strategy, systems thinking, and user empathy. I lead cross-functional teams to build products that solve real problems, from automating cybersecurity workflows to improving front-end architecture and user experience for enterprise platforms. I enjoy translating complex needs into focused product decisions and creating alignment when the path forward is unclear.
               </Text>
               
               <Text fontSize="lg">
-                With experience across B2B SaaS, internal tooling, and security platforms, I've shipped solutions that not only meet technical requirements but align with long-term vision and impact. I'm deeply invested in asking better questions, reducing noise, and helping teams move faster with clarity and confidence.
+                Originally from Washington, D.C., I relocated to Berlin to join Europe's growing tech ecosystem and build impactful products at scale. With experience across B2B SaaS, platform tools, and security infrastructure, I've shipped solutions that not only meet technical requirements but also align with long-term business strategy and product vision. I'm deeply invested in asking better questions, reducing noise, and helping teams move faster with clarity and confidence.
               </Text>
               
               <Text fontSize="lg">
-                Above all, I value ownership, adaptability, and continuous learning — whether it's in product, life, or lifting.
+                I value ownership, adaptability, and continuous learning  whether it&apos;s in product or life.
               </Text>
 
               <VStack align="stretch" mt={12} spacing={6}>

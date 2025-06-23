@@ -1,10 +1,10 @@
 {
-  "name": "portfolio-website-react",
+  "name": "alirehman2210-portfolio",
   "version": "0.1.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "DISABLE_ESLINT_PLUGIN=true NEXT_DISABLE_ESLINT=1 next build",
+    "build": "next build",
     "start": "next start",
     "lint": "next lint"
   },
@@ -18,7 +18,8 @@
     "framer-motion": "^10.18.0",
     "next": "15.3.2",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "yet-another-react-lightbox": "^3.23.3"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",

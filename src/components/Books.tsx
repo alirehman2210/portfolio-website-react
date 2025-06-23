@@ -34,25 +34,25 @@ const Books = () => {
       title: "The Afterlife Manual: Every Muslim's Guide to Happily Ever Hereafter",
       author: "Ousama Iyad Alshurafa",
       year: 2025,
-      category: "Islamic Studies"
+      category: "Spiritual Reflection"
     },
     {
       title: "Al-Ghazali on Disciplining the Soul & on Breaking the Two Desires",
       author: "Al-Ghazali",
       year: 2025,
-      category: "Islamic Studies"
+      category: "Spiritual Reflection"
     },
     {
       title: "Diseases of the Heart and Their Cure",
       author: "Shaykh Al-Islam Ibn Taymiya",
       year: 2025,
-      category: "Islamic Studies"
+      category: "Spiritual Reflection"
     },
     {
       title: "Al Ghazali on Patience and Thankfulness",
       author: "Al-Ghazali",
       year: 2025,
-      category: "Islamic Studies"
+      category: "Spiritual Reflection"
     },
     {
       title: "Deep Work",
@@ -76,7 +76,7 @@ const Books = () => {
       title: "The Beginning of Guidance: The Imam and proof of Islam",
       author: "Al-Ghazali",
       year: 2024,
-      category: "Islamic Studies"
+      category: "Spiritual Reflection"
     },
     {
       title: "The Consolation of Philosophy",
@@ -101,6 +101,78 @@ const Books = () => {
       author: "Dan Heath",
       year: 2024,
       category: "Business & Psychology"
+    },
+    {
+      title: "How to Read a Book",
+      author: "Mortimer J. Adler",
+      year: 2023,
+      category: "Education"
+    },
+    {
+      title: "The Chancellor: The Remarkable Odyssey of Angela Merkel",
+      author: "Kati Marton",
+      year: 2023,
+      category: "Biography"
+    },
+    {
+      title: "The Abolition of Man",
+      author: "C. S. Lewis",
+      year: 2023,
+      category: "Philosophy"
+    },
+    {
+      title: "The Screwtape Letters",
+      author: "C. S. Lewis",
+      year: 2023,
+      category: "Theology"
+    },
+    {
+      title: "The Two Greatest Ideas",
+      author: "Linda Zagzebski",
+      year: 2023,
+      category: "Philosophy"
+    },
+    {
+      title: "Range: Why Generalists Triumph in a Specialized World",
+      author: "David Epstein",
+      year: 2023,
+      category: "Psychology"
+    },
+    {
+      title: "Never Finished",
+      author: "David Goggins",
+      year: 2023,
+      category: "Memoir"
+    },
+    {
+      title: "The Psychology of Money",
+      author: "Morgan Housel",
+      year: 2023,
+      category: "Finance"
+    },
+    {
+      title: "Meditations",
+      author: "Robin Waterfield",
+      year: 2023,
+      category: "Philosophy"
+    },
+    {
+      title: "Post Corona: From Crisis to Opportunity",
+      author: "Scott Galloway",
+      year: 2023,
+      category: "Business"
+    },
+    {
+      title: "Factfulness: Ten Reasons We're Wrong About the World",
+      author: "Hans Rosling",
+      year: 2023,
+      category: "Statistics"
+    },
+    {
+      title: "And There Was Light",
+      author: "Jacques Lusseyran",
+      year: 2023,
+      category: "Memoir"
     }
     // Add more books as needed
   ];
@@ -115,7 +187,7 @@ const Books = () => {
 
   const years = Object.keys(booksByYear)
     .map(Number)
-    .sort((a, b) => b - a);
+    .sort((a, b) => a - b);
 
   const bgColor = useColorModeValue('gray.50', 'gray.900');
   const cardBg = useColorModeValue('white', 'gray.800');

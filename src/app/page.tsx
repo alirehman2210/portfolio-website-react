@@ -1,7 +1,6 @@
 'use client';
 
 import Image from 'next/image';
-import { motion } from 'framer-motion';
 import {
   Box,
   Container,
@@ -13,14 +12,11 @@ import {
   Flex,
   Button,
 } from '@chakra-ui/react';
+// import { motion } from 'framer-motion';
 import Navigation from '@/components/Navigation';
 
-const fadeIn = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0 },
-};
-
 export default function Home() {
+  // const fadeIn = { /* animation values */ };
   return (
     <Box bg="#F9FAFB" minH="100vh">
       <Navigation />
@@ -64,15 +60,14 @@ export default function Home() {
                     fontWeight="bold"
                     textAlign={{ base: "center", md: "left" }}
                   >
-                    Product Manager & Strategic Thinker
+                    Product Leader & Strategic Thinker
                   </Heading>
                   <Text 
                     fontSize={{ base: "lg", md: "xl" }}
                     color="gray.600"
                     textAlign={{ base: "center", md: "left" }}
                   >
-                    Experienced Product Manager with a passion for building user-centric solutions 
-                    and driving product strategy through data-driven decisions.
+                    Product Leader with a proven track record of accelerating platform growth, automation, and strategic innovation through data-driven insights and experimentation. Relocated from Washington, D.C. to Berlin to immerse in Europe's vibrant tech ecosystem, building scalable, user-centric solutions that deliver global impact.
                   </Text>
                 </Stack>
 
@@ -164,9 +159,7 @@ export default function Home() {
                 lineHeight="tall"
                 textAlign={{ base: "center", md: "left" }}
               >
-                Currently developing and implementing AI-enhanced cybersecurity solutions including automating workflows, 
-                streamlining incident management, and building internal tools that empower security analysts for faster 
-                and smarter response under high-pressure situations.
+                Currently focused on AI-enhanced security products, building internal tools that automate workflows, accelerate incident response, and enable faster, data-informed decision-making.
               </Text>
 
               {/* Impact Metrics */}
@@ -305,7 +298,7 @@ export default function Home() {
               maxW="3xl"
               mx="auto"
             >
-              &ldquo;Knowledge without action is wastefulness, and action without knowledge is foolishness.&rdquo;
+              &quot;Knowledge without action is wastefulness, and action without knowledge is foolishness.&quot;
             </Text>
           </Box>
         </Stack>

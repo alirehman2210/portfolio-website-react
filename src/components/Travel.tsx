@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
 import {
   Box,
   Container,
@@ -10,6 +10,8 @@ import {
   VStack,
   useColorModeValue,
 } from '@chakra-ui/react';
+import Lightbox from 'yet-another-react-lightbox';
+import 'yet-another-react-lightbox/styles.css';
 
 interface TravelDestination {
   title: string;
@@ -20,6 +22,16 @@ interface TravelDestination {
 }
 
 const Travel = () => {
+  const [open, setOpen] = useState(false);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [currentDestinationImages, setCurrentDestinationImages] = useState<string[]>([]);
+
+  const openLightbox = (destinationIndex: number, imageIndex: number) => {
+    setCurrentDestinationImages(destinations[destinationIndex].images);
+    setCurrentIndex(imageIndex);
+    setOpen(true);
+  };
+
   const destinations: TravelDestination[] = [
     {
       title: "Nice / Cannes / Monaco",
@@ -56,9 +68,11 @@ const Travel = () => {
       title: "Tallinn, Estonia",
       description: "Wandering through the medieval streets of one of Europe's best-preserved old towns while experiencing Estonia's digital innovation",
       images: [
-        "/travels/2024/tallinn/image1.jpeg",
-        "/travels/2024/tallinn/image2.jpeg",
-        "/travels/2024/tallinn/image3.jpeg"
+        "/travels/2024/tallinn/IMG_1204.jpg",
+        "/travels/2024/tallinn/IMG_1197.jpg",
+        "/travels/2024/tallinn/IMG_1192.jpg",
+        "/travels/2024/tallinn/IMG_1176.jpg",
+        "/travels/2024/tallinn/IMG_1157.jpg"
       ],
       date: "2024"
     },
@@ -66,9 +80,13 @@ const Travel = () => {
       title: "Riga, Latvia",
       description: "Exploring the Art Nouveau architecture and rich history of Latvia's capital city",
       images: [
-        "/travels/2024/riga/image1.jpeg",
-        "/travels/2024/riga/image2.jpeg",
-        "/travels/2024/riga/image3.jpeg"
+        "/travels/2024/riga/IMG_1241.jpg",
+        "/travels/2024/riga/IMG_1245.jpg",
+        "/travels/2024/riga/IMG_1249.jpg",
+        "/travels/2024/riga/IMG_1250.jpg",
+        "/travels/2024/riga/IMG_1252.jpg",
+        "/travels/2024/riga/IMG_1255.jpg",
+        "/travels/2024/riga/IMG_1257.jpg"
       ],
       date: "2024"
     },
@@ -227,6 +245,8 @@ const Travel = () => {
                       overflow="hidden"
                       boxShadow="lg"
                       transition="all 0.3s"
+                      cursor="pointer"
+                      onClick={() => openLightbox(index, imgIndex)}
                       _hover={{
                         transform: 'scale(1.02)',
                         boxShadow: 'xl',
@@ -243,6 +263,12 @@ const Travel = () => {
           </VStack>
         </VStack>
       </Container>
+      <Lightbox
+        open={open}
+        close={() => setOpen(false)}
+        slides={currentDestinationImages.map(url => ({ src: url }))}
+        index={currentIndex}
+      />
     </Box>
   );
 };
