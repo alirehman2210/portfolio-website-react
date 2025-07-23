@@ -47,15 +47,15 @@ const Travel = () => {
         "/travels/2025/montenegro/IMG_4555.jpg"
       ],
       videos: [
-        "/travels/2025/montenegro/IMG_4232.MOV",
-        "/travels/2025/montenegro/IMG_4379.MOV",
-        "/travels/2025/montenegro/IMG_4441.MOV"
+        "/travels/2025/montenegro/IMG_4232_compressed.mp4",
+        "/travels/2025/montenegro/IMG_4379_compressed.mp4",
+        "/travels/2025/montenegro/IMG_4441_compressed_v2.mp4"
       ],
       customOrder: {
         videos: [
-          "/travels/2025/montenegro/IMG_4232.MOV",
-          "/travels/2025/montenegro/IMG_4379.MOV",
-          "/travels/2025/montenegro/IMG_4441.MOV"
+          "/travels/2025/montenegro/IMG_4232_compressed.mp4",
+          "/travels/2025/montenegro/IMG_4379_compressed.mp4",
+          "/travels/2025/montenegro/IMG_4441_compressed_v2.mp4"
         ],
         images: [
           "/travels/2025/montenegro/IMG_4560.PNG",
@@ -75,15 +75,15 @@ const Travel = () => {
         "/travels/2025/dubrovnik/IMG_4554.PNG"
       ],
       videos: [
-        "/travels/2025/dubrovnik/IMG_4052.MOV",
-        "/travels/2025/dubrovnik/IMG_4054.MOV",
-        "/travels/2025/dubrovnik/IMG_4115.MOV"
+        "/travels/2025/dubrovnik/IMG_4052_compressed.mp4",
+        "/travels/2025/dubrovnik/IMG_4054_compressed_v2.mp4",
+        "/travels/2025/dubrovnik/IMG_4115_compressed_v2.mp4"
       ],
       customOrder: {
         videos: [
-          "/travels/2025/dubrovnik/IMG_4052.MOV",
-          "/travels/2025/dubrovnik/IMG_4054.MOV",
-          "/travels/2025/dubrovnik/IMG_4115.MOV"
+          "/travels/2025/dubrovnik/IMG_4052_compressed.mp4",
+          "/travels/2025/dubrovnik/IMG_4054_compressed_v2.mp4",
+          "/travels/2025/dubrovnik/IMG_4115_compressed_v2.mp4"
         ],
         images: [
           "/travels/2025/dubrovnik/IMG_4544.PNG",
@@ -98,27 +98,13 @@ const Travel = () => {
       description: "Exploring Stockholm means discovering a city of islands, where historic charm meets modern design and scenic waterfronts.",
       images: [
         "/travels/2025/stockholm/IMG_3786.PNG",
-        "/travels/2025/stockholm/IMG_4540.PNG",
         "/travels/2025/stockholm/IMG_4541.PNG",
-        "/travels/2025/stockholm/IMG_4542.PNG"
+        "/travels/2025/stockholm/citysweden.JPG"
       ],
       videos: [
-        "/travels/2025/stockholm/IMG_3784.MOV",
-        "/travels/2025/stockholm/IMG_3785.MOV",
-        "/travels/2025/stockholm/IMG_3820.MOV"
+        "/travels/2025/stockholm/IMG_3784_compressed.mp4",
+        "/travels/2025/stockholm/IMG_3820_compressed.mp4"
       ],
-      customOrder: {
-        videos: [
-          "/travels/2025/stockholm/IMG_3784.MOV",
-          "/travels/2025/stockholm/IMG_3785.MOV",
-          "/travels/2025/stockholm/IMG_3820.MOV"
-        ],
-        images: [
-          "/travels/2025/stockholm/IMG_3786.PNG",
-          "/travels/2025/stockholm/IMG_4540.PNG",
-          "/travels/2025/stockholm/IMG_4541.PNG"
-        ]
-      },
       date: "2025"
     },
     {
