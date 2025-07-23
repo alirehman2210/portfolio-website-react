@@ -40,7 +40,7 @@ const Travel = () => {
   const destinations: TravelDestination[] = [
     {
       title: "Budva & Kotor - Montenegro",
-      description: "Exploring the Adriatic gems with Budva's ancient walls and Kotor's stunning bay, where history meets breathtaking coastal beauty",
+      description: "Wandering through Montenegro's coastal treasures from Budva's beaches and old town charm to Kotor's breathtaking bay and mountain views.",
       images: [
         "/travels/2025/montenegro/IMG_4560.PNG",
         "/travels/2025/montenegro/IMG_4556.jpg",
@@ -67,7 +67,7 @@ const Travel = () => {
     },
     {
       title: "Dubrovnik, Croatia",
-      description: "Discovering the Pearl of the Adriatic with its stunning medieval walls, crystal-clear waters, and rich cultural heritage",
+      description: "Walking through Dubrovnik feels like a dream — ancient walls, marble streets, and epic sea views. No wonder Game of Thrones was filmed here.",
       images: [
         "/travels/2025/dubrovnik/IMG_4544.PNG",
         "/travels/2025/dubrovnik/IMG_4552.PNG",
@@ -95,7 +95,7 @@ const Travel = () => {
     },
     {
       title: "Stockholm, Sweden",
-      description: "Exploring Stockholm means discovering a city of islands, where historic charm meets modern design and scenic waterfronts.",
+      description: "Exploring Stockholm means islands, bridges, a little royal charm, and sleek city design all flowing into vibrant waterfront life.",
       images: [
         "/travels/2025/stockholm/IMG_3786.PNG",
         "/travels/2025/stockholm/IMG_4541.PNG",
