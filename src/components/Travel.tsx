@@ -19,6 +19,11 @@ interface TravelDestination {
   images: string[];
   videos?: string[];
   date: string;
+  customOrder?: {
+    videos: string[];
+    images: string[];
+    finalVideos?: string[];
+  };
 }
 
 const Travel = () => {
@@ -34,8 +39,91 @@ const Travel = () => {
 
   const destinations: TravelDestination[] = [
     {
+      title: "Budva & Kotor - Montenegro",
+      description: "Exploring the Adriatic gems with Budva's ancient walls and Kotor's stunning bay, where history meets breathtaking coastal beauty",
+      images: [
+        "/travels/2025/montenegro/IMG_4560.PNG",
+        "/travels/2025/montenegro/IMG_4556.jpg",
+        "/travels/2025/montenegro/IMG_4555.jpg"
+      ],
+      videos: [
+        "/travels/2025/montenegro/IMG_4232.MOV",
+        "/travels/2025/montenegro/IMG_4379.MOV",
+        "/travels/2025/montenegro/IMG_4441.MOV"
+      ],
+      customOrder: {
+        videos: [
+          "/travels/2025/montenegro/IMG_4232.MOV",
+          "/travels/2025/montenegro/IMG_4379.MOV",
+          "/travels/2025/montenegro/IMG_4441.MOV"
+        ],
+        images: [
+          "/travels/2025/montenegro/IMG_4560.PNG",
+          "/travels/2025/montenegro/IMG_4556.jpg",
+          "/travels/2025/montenegro/IMG_4555.jpg"
+        ]
+      },
+      date: "2025"
+    },
+    {
+      title: "Dubrovnik, Croatia",
+      description: "Discovering the Pearl of the Adriatic with its stunning medieval walls, crystal-clear waters, and rich cultural heritage",
+      images: [
+        "/travels/2025/dubrovnik/IMG_4544.PNG",
+        "/travels/2025/dubrovnik/IMG_4552.PNG",
+        "/travels/2025/dubrovnik/IMG_4553.PNG",
+        "/travels/2025/dubrovnik/IMG_4554.PNG"
+      ],
+      videos: [
+        "/travels/2025/dubrovnik/IMG_4052.MOV",
+        "/travels/2025/dubrovnik/IMG_4054.MOV",
+        "/travels/2025/dubrovnik/IMG_4115.MOV"
+      ],
+      customOrder: {
+        videos: [
+          "/travels/2025/dubrovnik/IMG_4052.MOV",
+          "/travels/2025/dubrovnik/IMG_4054.MOV",
+          "/travels/2025/dubrovnik/IMG_4115.MOV"
+        ],
+        images: [
+          "/travels/2025/dubrovnik/IMG_4544.PNG",
+          "/travels/2025/dubrovnik/IMG_4552.PNG",
+          "/travels/2025/dubrovnik/IMG_4554.PNG"
+        ]
+      },
+      date: "2025"
+    },
+    {
+      title: "Stockholm, Sweden",
+      description: "Exploring Stockholm means discovering a city of islands, where historic charm meets modern design and scenic waterfronts.",
+      images: [
+        "/travels/2025/stockholm/IMG_3786.PNG",
+        "/travels/2025/stockholm/IMG_4540.PNG",
+        "/travels/2025/stockholm/IMG_4541.PNG",
+        "/travels/2025/stockholm/IMG_4542.PNG"
+      ],
+      videos: [
+        "/travels/2025/stockholm/IMG_3784.MOV",
+        "/travels/2025/stockholm/IMG_3785.MOV",
+        "/travels/2025/stockholm/IMG_3820.MOV"
+      ],
+      customOrder: {
+        videos: [
+          "/travels/2025/stockholm/IMG_3784.MOV",
+          "/travels/2025/stockholm/IMG_3785.MOV",
+          "/travels/2025/stockholm/IMG_3820.MOV"
+        ],
+        images: [
+          "/travels/2025/stockholm/IMG_3786.PNG",
+          "/travels/2025/stockholm/IMG_4540.PNG",
+          "/travels/2025/stockholm/IMG_4541.PNG"
+        ]
+      },
+      date: "2025"
+    },
+    {
       title: "Nice / Cannes / Monaco",
-      description: "Exploring the stunning French Riviera: from the charming streets of Nice to the glamorous Cannes and the luxurious principality of Monaco",
+      description: "Exploring the stunning French Riviera: from the charming streets of Nice to the glamorous Cannes and the luxurious Monaco",
       images: [
         "/travels/2025/french-riviera/picturea.jpeg",
         "/travels/2025/french-riviera/pictureb.jpeg",
@@ -183,77 +271,163 @@ const Travel = () => {
                   </Text>
                 </Box>
 
-                {destination.videos && (
-                  <SimpleGrid 
-                    columns={{ base: 1, sm: (destination.videos?.length || 0) > 1 ? 2 : 1, md: (destination.videos?.length || 0) > 1 ? 2 : 1 }} 
-                    spacing={8}
-                    w="full"
-                    mb={8}
-                    justifyItems="center"
-                    maxW={(destination.videos?.length || 0) === 1 ? "600px" : "full"}
-                    mx="auto"
-                  >
-                    {destination.videos.map((videoUrl, videoIndex) => (
-                      <Box
-                        key={videoIndex}
-                        as="video"
-                        controls
-                        preload="metadata"
-                        w="full"
-                        maxW={(destination.videos?.length || 0) === 1 ? "600px" : "full"}
-                        h="300px"
-                        borderRadius="lg"
-                        overflow="hidden"
-                        boxShadow="lg"
-                        playsInline
-                        objectFit="cover"
-                        muted={videoUrl.includes('IMG_0727')}
-                        sx={videoUrl.includes('IMG_0727') ? {
-                          '&::-webkit-media-controls-volume-slider': {
-                            display: 'none',
-                          },
-                          '&::-webkit-media-controls-mute-button': {
-                            display: 'none',
-                          },
-                          '&::-webkit-media-controls-volume-control-container': {
-                            display: 'none',
-                          }
-                        } : {}}
-                      >
-                        <source src={videoUrl} type="video/mp4" />
-                        <source src={videoUrl} type="video/quicktime" />
-                        <source src={videoUrl} type="video/x-m4v" />
-                        Your browser does not support the video tag.
-                      </Box>
-                    ))}
-                  </SimpleGrid>
-                )}
+                {destination.customOrder ? (
+                  // Custom order rendering for Stockholm
+                  <>
+                    {/* First videos */}
+                    {destination.customOrder?.videos && destination.customOrder.videos.length > 0 && (
+                                             <SimpleGrid 
+                         columns={{ base: 1, sm: 2, md: 3 }} 
+                         spacing={8}
+                         w="full"
+                         mb={8}
+                         justifyItems="center"
+                         mx="auto"
+                       >
+                                                 {destination.customOrder.videos.map((videoUrl, videoIndex) => (
+                           <Box
+                             key={`first-${videoIndex}`}
+                             as="video"
+                             controls
+                             preload="metadata"
+                             w="full"
+                             maxW={destination.customOrder.videos.length === 1 ? "600px" : "full"}
+                             h="300px"
+                             borderRadius="lg"
+                             overflow="hidden"
+                             boxShadow="lg"
+                             playsInline
+                             objectFit="cover"
+                             muted
+                             sx={{
+                               '&::-webkit-media-controls-volume-slider': {
+                                 display: 'none',
+                               },
+                               '&::-webkit-media-controls-mute-button': {
+                                 display: 'none',
+                               },
+                               '&::-webkit-media-controls-volume-control-container': {
+                                 display: 'none',
+                               }
+                             }}
+                           >
+                            <source src={videoUrl} type="video/mp4" />
+                            <source src={videoUrl} type="video/quicktime" />
+                            <source src={videoUrl} type="video/x-m4v" />
+                            Your browser does not support the video tag.
+                          </Box>
+                        ))}
+                      </SimpleGrid>
+                    )}
 
-                <SimpleGrid 
-                  columns={{ base: 1, sm: 2, md: 3 }} 
-                  spacing={8}
-                  w="full"
-                >
-                  {destination.images.map((imageUrl, imgIndex) => (
-                    <Box
-                      key={imgIndex}
-                      h="300px"
-                      bgImage={`url(${imageUrl})`}
-                      bgSize="cover"
-                      bgPosition="center"
-                      borderRadius="lg"
-                      overflow="hidden"
-                      boxShadow="lg"
-                      transition="all 0.3s"
-                      cursor="pointer"
-                      onClick={() => openLightbox(index, imgIndex)}
-                      _hover={{
-                        transform: 'scale(1.02)',
-                        boxShadow: 'xl',
-                      }}
-                    />
-                  ))}
-                </SimpleGrid>
+                    {/* Images */}
+                    {destination.customOrder?.images && destination.customOrder.images.length > 0 && (
+                      <SimpleGrid 
+                        columns={{ base: 1, sm: 2, md: 3 }} 
+                        spacing={8}
+                        w="full"
+                        mb={8}
+                      >
+                        {destination.customOrder.images.map((imageUrl, imgIndex) => (
+                          <Box
+                            key={`custom-${imgIndex}`}
+                            h="300px"
+                            bgImage={`url(${imageUrl})`}
+                            bgSize="cover"
+                            bgPosition="center"
+                            borderRadius="lg"
+                            overflow="hidden"
+                            boxShadow="lg"
+                            transition="all 0.3s"
+                            cursor="pointer"
+                            onClick={() => openLightbox(index, imgIndex)}
+                            _hover={{
+                              transform: 'scale(1.02)',
+                              boxShadow: 'xl',
+                            }}
+                          />
+                        ))}
+                      </SimpleGrid>
+                    )}
+
+                    
+                  </>
+                ) : (
+                  // Standard rendering for other destinations
+                  <>
+                    {destination.videos && (
+                      <SimpleGrid 
+                        columns={{ base: 1, sm: (destination.videos?.length || 0) > 1 ? 2 : 1, md: (destination.videos?.length || 0) > 1 ? 2 : 1 }} 
+                        spacing={8}
+                        w="full"
+                        mb={8}
+                        justifyItems="center"
+                        maxW={(destination.videos?.length || 0) === 1 ? "600px" : "full"}
+                        mx="auto"
+                      >
+                        {destination.videos.map((videoUrl, videoIndex) => (
+                          <Box
+                            key={videoIndex}
+                            as="video"
+                            controls
+                            preload="metadata"
+                            w="full"
+                            maxW={(destination.videos?.length || 0) === 1 ? "600px" : "full"}
+                            h="300px"
+                            borderRadius="lg"
+                            overflow="hidden"
+                            boxShadow="lg"
+                            playsInline
+                            objectFit="cover"
+                            muted
+                            sx={{
+                              '&::-webkit-media-controls-volume-slider': {
+                                display: 'none',
+                              },
+                              '&::-webkit-media-controls-mute-button': {
+                                display: 'none',
+                              },
+                              '&::-webkit-media-controls-volume-control-container': {
+                                display: 'none',
+                              }
+                            }}
+                          >
+                            <source src={videoUrl} type="video/mp4" />
+                            <source src={videoUrl} type="video/quicktime" />
+                            <source src={videoUrl} type="video/x-m4v" />
+                            Your browser does not support the video tag.
+                          </Box>
+                        ))}
+                      </SimpleGrid>
+                    )}
+
+                    <SimpleGrid 
+                      columns={{ base: 1, sm: 2, md: 3 }} 
+                      spacing={8}
+                      w="full"
+                    >
+                      {destination.images.map((imageUrl, imgIndex) => (
+                        <Box
+                          key={imgIndex}
+                          h="300px"
+                          bgImage={`url(${imageUrl})`}
+                          bgSize="cover"
+                          bgPosition="center"
+                          borderRadius="lg"
+                          overflow="hidden"
+                          boxShadow="lg"
+                          transition="all 0.3s"
+                          cursor="pointer"
+                          onClick={() => openLightbox(index, imgIndex)}
+                          _hover={{
+                            transform: 'scale(1.02)',
+                            boxShadow: 'xl',
+                          }}
+                        />
+                      ))}
+                    </SimpleGrid>
+                  </>
+                )}
 
                 {index < destinations.length - 1 && (
                   <Box h="1px" bg="gray.200" w="full" mt={6} mb={2} />
