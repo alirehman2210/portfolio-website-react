@@ -61,7 +61,7 @@ export default function Experience() {
                   </Box>
                 </HStack>
                 <Text>
-                  Led cross-functional teams focused on user experience and front-end architecture for GreenLake Central, HPE's flagship hybrid cloud platform. Collaborated with designers, UI developers, and system architects to deliver scalable design systems and intuitive user flows.
+                  Led cross-functional teams focused on user experience and front-end architecture for GreenLake Central, HPE&apos;s flagship hybrid cloud platform. Collaborated with designers, UI developers, and system architects to deliver scalable design systems and intuitive user flows.
                 </Text>
               </Box>
 
@@ -95,7 +95,7 @@ export default function Experience() {
                   </Box>
                 </HStack>
                 <Text>
-                  Supported the launch for Accenture's Cyber Intelligence Platform (ACIP). Delivered product, operations, and data solutions across healthcare, retail, and energy clients helping drive measurable outcomes in patient care, operational performance, and business efficiency. 
+                  Supported the launch for Accenture&apos;s Cyber Intelligence Platform (ACIP). Delivered product, operations, and data solutions across healthcare, retail, and energy clients helping drive measurable outcomes in patient care, operational performance, and business efficiency. 
                 </Text>
               </Box>
             </Stack>

@@ -67,7 +67,7 @@ export default function Home() {
                     color="gray.600"
                     textAlign={{ base: "center", md: "left" }}
                   >
-                    Product Leader with a proven track record of accelerating platform growth, automation, and strategic innovation through data-driven insights and experimentation. Relocated from Washington, D.C. to Berlin to immerse in Europe's vibrant tech ecosystem, building scalable, user-centric solutions that deliver global impact.
+                    Product Leader with a proven track record of accelerating platform growth, automation, and strategic innovation through data-driven insights and experimentation. Relocated from Washington, D.C. to Berlin to immerse in Europe&apos;s vibrant tech ecosystem, building scalable, user-centric solutions that deliver global impact.
                   </Text>
                 </Stack>
 
