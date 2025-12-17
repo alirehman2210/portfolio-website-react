@@ -47,20 +47,50 @@ const About = () => {
           <Box bg={cardBg} rounded="2xl" shadow="lg" p={8} w="full">
             <VStack spacing={6} align="stretch">
               <Text fontSize="lg">
-                Avid reader, spontaneous traveler, and fitness enthusiast that enjoys deep conversations, last-minute adventures, and the kind of books that change how you see the world. Whether I&apos;m diving into a new city or a new book, I try to bring curiosity, energy, and intention to everything I do.
+                I am an avid reader, spontaneous traveler, and fitness enthusiast drawn to deep conversations, last-minute adventures, and books that reshape how you see the world. I bring curiosity and intention to everything I do, whether I am exploring a new city or a new idea.
               </Text>
               
               <Text fontSize="lg">
-                Professionally, I'm a Product Manager who thrives at the intersection of strategy, systems thinking, and user empathy. I lead cross-functional teams to build products that solve real problems, from automating cybersecurity workflows to improving front-end architecture and user experience for enterprise platforms. I enjoy translating complex needs into focused product decisions and creating alignment when the path forward is unclear.
+                Originally from Washington, D.C. and am now based in Berlin. I work in product management within Europe&apos;s growing tech ecosystem. I thrive at the intersection of strategy, systems thinking, and user empathy, leading cross-functional teams to solve real problems across cybersecurity, supply chain, and AI-driven products.
               </Text>
-              
-              <Text fontSize="lg">
-                Originally from Washington, D.C., I relocated to Berlin to join Europe's growing tech ecosystem and build impactful products at scale. With experience across B2B SaaS, platform tools, and security infrastructure, I've shipped solutions that not only meet technical requirements but also align with long-term business strategy and product vision. I'm deeply invested in asking better questions, reducing noise, and helping teams move faster with clarity and confidence.
-              </Text>
-              
-              <Text fontSize="lg">
-                I value ownership, adaptability, and continuous learning  whether it&apos;s in product or life.
-              </Text>
+
+              <VStack align="stretch" mt={6} spacing={6}>
+                <Heading as="h3" size="lg">
+                  Personal Projects
+                </Heading>
+                <VStack align="stretch" spacing={6}>
+                  <Box>
+                    <Text fontSize="md" fontWeight="bold" mb={3}>
+                      1. AI-Driven Knowledge Retention Newsletter
+                    </Text>
+                    <VStack align="stretch" spacing={2} pl={4}>
+                      <Text fontSize="md">
+                        • Designed and launched an automated AI newsletter that distills long-form content (articles, YouTube transcripts, and PDFs) into structured summaries delivered via email, growing the audience to 100+ readers.
+                      </Text>
+                      <Text fontSize="md">
+                        • Built the product to solve a personal retention problem: preventing knowledge decay after consuming high-volume educational content by reinforcing learning through repetition and reflection.
+                      </Text>
+                      <Text fontSize="md">
+                        • Implemented automated content ingestion, AI summarization, mobile-optimized email rendering, and subscriber management using Google Apps Script and OpenAI APIs.
+                      </Text>
+                    </VStack>
+                  </Box>
+                  
+                  <Box>
+                    <Text fontSize="md" fontWeight="bold" mb={3}>
+                      2. Personal Knowledge Site | ali-rehman.com
+                    </Text>
+                    <VStack align="stretch" spacing={2} pl={4}>
+                      <Text fontSize="md">
+                        • Built a personal site to intentionally track books read by year and document personal travel through curated photography, creating a long-term record of learning and lived experiences.
+                      </Text>
+                      <Text fontSize="md">
+                        • Designed the site as a lightweight system to preserve, timelines, and personal milestones.
+                      </Text>
+                    </VStack>
+                  </Box>
+                </VStack>
+              </VStack>
 
               <VStack align="stretch" mt={12} spacing={6}>
                 <Heading as="h3" size="lg">

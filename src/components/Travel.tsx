@@ -39,6 +39,23 @@ const Travel = () => {
 
   const destinations: TravelDestination[] = [
     {
+      title: "Dubai, UAE",
+      description: "Experiencing Dubai's futuristic skyline, world-class luxury, and the rich desert landscapes that surround the city and found Berlin hiding in Dubai !",
+      images: [
+        "/travels/2025/dubai/IMG_2259.jpeg",
+        "/travels/2025/dubai/IMG_5423.jpg",
+        "/travels/2025/dubai/IMG_5488.jpg",
+        "/travels/2025/dubai/IMG_5570.jpg",
+        "/travels/2025/dubai/dubaiskyline.jpg",
+        "/travels/2025/dubai/fooddubai.JPG"
+      ],
+      videos: [
+        "/travels/2025/dubai/dubaiperfume_compressed.mp4",
+        "/travels/2025/dubai/pool_compressed.mp4"
+      ],
+      date: "2025"
+    },
+    {
       title: "Budva & Kotor - Montenegro",
       description: "Wandering through Montenegro's coastal treasures from Budva's beaches and old town charm to Kotor's breathtaking bay and mountain views.",
       images: [
