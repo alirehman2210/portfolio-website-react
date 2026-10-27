@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import { Providers } from "./providers";
 
 export const metadata: Metadata = {
-  title: "Ali Rehman - Product Manager & Strategic Thinker",
-  description: "Portfolio of Ali Rehman, an experienced Product Manager specializing in user-centric solutions and data-driven product strategy.",
+  title: "Ali Rehman - Senior Product Manager & AI Builder",
+  description: "Portfolio of Ali Rehman, a Senior Product Manager with 10+ years across logistics, enterprise SaaS, and platform development, who also builds AI-powered tools and intelligent workflows.",
 };
 
 export default function RootLayout({

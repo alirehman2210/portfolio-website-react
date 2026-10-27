@@ -1,12 +1,8 @@
-'use client';
+import { redirect } from 'next/navigation';
 
-import About from '../../components/About';
-import PageWrapper from '../../components/PageWrapper';
-
+// The About page's personal project content now lives on /projects.
+// The original page markup is preserved in src/components/About.tsx, which is
+// intentionally left in place and unmodified pending review.
 export default function AboutPage() {
-  return (
-    <PageWrapper>
-      <About />
-    </PageWrapper>
-  );
-} 
+  redirect('/projects');
+}

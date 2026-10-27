@@ -1,6 +1,7 @@
 'use client';
 
 import Image from 'next/image';
+import NextLink from 'next/link';
 import {
   Box,
   Container,
@@ -11,24 +12,29 @@ import {
   SimpleGrid,
   Flex,
   Button,
+  LinkBox,
+  LinkOverlay,
+  Badge,
 } from '@chakra-ui/react';
+import { ArrowForwardIcon } from '@chakra-ui/icons';
 // import { motion } from 'framer-motion';
 import Navigation from '@/components/Navigation';
+import { technicalProjects } from '@/data/projects';
 
 export default function Home() {
   // const fadeIn = { /* animation values */ };
   return (
     <Box bg="#F9FAFB" minH="100vh">
       <Navigation />
-      
+
       <Container maxW="6xl" py={{ base: 10, md: 12 }}>
         <Stack spacing={{ base: 6, md: 8 }} align="stretch">
           {/* Hero Section */}
-          <Box 
-            as="section" 
-            bg="white" 
-            p={{ base: 6, md: 8 }} 
-            rounded="2xl" 
+          <Box
+            as="section"
+            bg="white"
+            p={{ base: 6, md: 8 }}
+            rounded="2xl"
             shadow="sm"
             borderWidth="1px"
             borderColor="gray.100"
@@ -46,40 +52,54 @@ export default function Home() {
           >
             <Stack spacing={{ base: 6, md: 8 }}>
               {/* Top Section: Title, Subtitle, and Photo */}
-              <Flex 
+              <Flex
                 direction={{ base: 'column', md: 'row' }}
                 gap={{ base: 6, md: 8 }}
                 align={{ base: 'center', md: 'start' }}
               >
                 {/* Left: Title and Subtitle */}
                 <Stack spacing={4} flex="1">
-                  <Heading 
-                    as="h1" 
-                    size="2xl" 
+                  <Heading
+                    as="h1"
+                    size="2xl"
                     lineHeight="1.2"
                     fontWeight="bold"
                     textAlign={{ base: "center", md: "left" }}
                   >
-                    Product Leader & Strategic Thinker
+                    Senior Product Manager & AI Builder
                   </Heading>
-                  <Text 
+                  <Text
                     fontSize={{ base: "lg", md: "xl" }}
                     color="gray.600"
                     textAlign={{ base: "center", md: "left" }}
                   >
-                    Product Leader with a proven track record of accelerating platform growth, automation, and strategic innovation through data-driven insights and experimentation. Relocated from Washington, D.C. to Berlin to immerse in Europe&apos;s vibrant tech ecosystem, building scalable, user-centric solutions that deliver global impact.
+                    I&apos;ve spent the last decade leading products across complex operational environments, from port logistics at Octopi and enterprise cloud at HPE to AI-driven automation at HelloFresh.
+                  </Text>
+                  <Text
+                    fontSize={{ base: "lg", md: "xl" }}
+                    color="gray.600"
+                    textAlign={{ base: "center", md: "left" }}
+                  >
+                    I combine product strategy with hands-on execution, taking ideas from discovery to launch. Today, I use AI-assisted development to build working prototypes, automate workflows, and turn complex business problems into practical solutions.
+                  </Text>
+                  <Text
+                    fontSize={{ base: "lg", md: "xl" }}
+                    color="gray.500"
+                    textAlign={{ base: "center", md: "left" }}
+                  >
+                    Outside of work, you&apos;ll usually find me training martial arts, staying active, or reading.
                   </Text>
                 </Stack>
 
                 {/* Right: Profile Photo */}
-                <Box 
-                  position="relative" 
+                <Box
+                  position="relative"
                   width={{ base: "200px", md: "220px" }}
                   height={{ base: "200px", md: "220px" }}
                   flexShrink={0}
                 >
                   <Image
-                    src="/travels/2025/french-riviera/pictureb.jpeg"
+                    src="/images/PicOfMe.png"
                     alt="Ali Rehman"
                     fill
                     style={{ objectFit: 'cover', borderRadius: '12px' }}
@@ -89,20 +109,36 @@ export default function Home() {
                 </Box>
               </Flex>
 
-              {/* Social Buttons */}
-              <Stack 
+              {/* Primary CTA + Social Buttons */}
+              <Stack
                 direction={{ base: "column", sm: "row" }}
                 spacing={{ base: 3, sm: 4 }}
                 justify={{ base: "center", md: "flex-start" }}
                 w="full"
               >
-                <Link href="https://github.com/alirehman2210" isExternal>
-                  <Button 
-                    variant="outline" 
+                <NextLink href="/projects" passHref>
+                  <Button
+                    colorScheme="blue"
                     size={{ base: "md", md: "lg" }}
                     width={{ base: "full", sm: "auto" }}
                     cursor="pointer"
-                    _hover={{ 
+                    rightIcon={<ArrowForwardIcon />}
+                    _hover={{
+                      transform: "translateY(-2px)",
+                      shadow: "md"
+                    }}
+                    transition="all 0.2s ease-in-out"
+                  >
+                    View My Projects
+                  </Button>
+                </NextLink>
+                <Link href="https://github.com/alirehman2210" isExternal>
+                  <Button
+                    variant="outline"
+                    size={{ base: "md", md: "lg" }}
+                    width={{ base: "full", sm: "auto" }}
+                    cursor="pointer"
+                    _hover={{
                       bg: "blue.50",
                       transform: "translateY(-2px)",
                       shadow: "md",
@@ -115,12 +151,12 @@ export default function Home() {
                   </Button>
                 </Link>
                 <Link href="https://www.linkedin.com/in/ali-r-b3888b207/" isExternal>
-                  <Button 
+                  <Button
                     variant="outline"
                     size={{ base: "md", md: "lg" }}
                     width={{ base: "full", sm: "auto" }}
                     cursor="pointer"
-                    _hover={{ 
+                    _hover={{
                       bg: "blue.50",
                       transform: "translateY(-2px)",
                       shadow: "md",
@@ -133,12 +169,12 @@ export default function Home() {
                   </Button>
                 </Link>
                 <Link href="mailto:alirehman2210@gmail.com" width={{ base: "full", sm: "auto" }}>
-                  <Button 
+                  <Button
                     variant="outline"
                     size={{ base: "md", md: "lg" }}
                     width="full"
                     cursor="pointer"
-                    _hover={{ 
+                    _hover={{
                       bg: "blue.50",
                       transform: "translateY(-2px)",
                       shadow: "md",
@@ -151,58 +187,15 @@ export default function Home() {
                   </Button>
                 </Link>
               </Stack>
-
-              {/* AI Work Description */}
-              <Text 
-                fontSize={{ base: "md", md: "lg" }}
-                color="gray.700" 
-                lineHeight="tall"
-                textAlign={{ base: "center", md: "left" }}
-              >
-                Currently focused on AI-enhanced security products, building internal tools that automate workflows, accelerate incident response, and enable faster, data-informed decision-making.
-              </Text>
-
-              {/* Impact Metrics */}
-              <SimpleGrid 
-                columns={{ base: 1, sm: 3 }} 
-                spacing={4}
-                pt={{ base: 2, md: 4 }}
-              >
-                {[
-                  { number: "12+", label: "Products Launched" },
-                  { number: "25+", label: "Strategic Initiatives Supported" },
-                  { number: "3", label: "Products Shipped Across 3 Continents" }
-                ].map((metric, index) => (
-                  <Box
-                    key={index}
-                    p={{ base: 4, md: 6 }}
-                    borderWidth="1px"
-                    borderRadius="xl"
-                    textAlign="center"
-                    bg="white"
-                    _hover={{
-                      transform: "translateY(-2px)",
-                      shadow: "lg",
-                      borderColor: "gray.300"
-                    }}
-                    transition="all 0.2s"
-                  >
-                    <Text fontSize={{ base: "2xl", md: "3xl" }} fontWeight="bold" mb={2}>
-                      {metric.number}
-                    </Text>
-                    <Text color="gray.600" fontSize={{ base: "sm", md: "md" }}>{metric.label}</Text>
-                  </Box>
-                ))}
-              </SimpleGrid>
             </Stack>
           </Box>
 
-          {/* Core Skills & Technologies Section */}
-          <Box 
-            as="section" 
+          {/* Featured Work */}
+          <Box
+            as="section"
             bg="#F8FAFC"
             p={{ base: 6, md: 8 }}
-            rounded="2xl" 
+            rounded="2xl"
             shadow="sm"
             borderWidth="1px"
             borderColor="gray.100"
@@ -218,88 +211,72 @@ export default function Home() {
               borderTopRadius: "2xl"
             }}
           >
-            <Stack spacing={{ base: 8, md: 10 }} align="center">
-              <Heading as="h2" size="xl" textAlign="center">
-                Core Skills & Technologies
-              </Heading>
-              <SimpleGrid 
-                columns={{ base: 2, md: 3, lg: 4 }} 
-                spacing={{ base: 4, md: 6 }}
-                w="full"
-              >
-                {[
-                  { name: 'Product Strategy', icon: '🎯', color: '#EBF8FF' },
-                  { name: 'User Research', icon: '🔍', color: '#F0FFF4' },
-                  { name: 'Data Analysis', icon: '📊', color: '#FAF5FF' },
-                  { name: 'Agile Management', icon: '🔄', color: '#FFF5F5' },
-                  { name: 'Stakeholder Communication', icon: '🤝', color: '#FFFAF0' },
-                  { name: 'Technical Leadership', icon: '💡', color: '#F0F5FF' },
-                  { name: 'AWS', icon: '☁️', color: '#EDF2F7' },
-                  { name: 'Experimentation & A/B Testing', icon: '🧪', color: '#F7FAFC' },
-                  { name: 'Prioritization & Tradeoffs', icon: '🔄', color: '#EDF2F7' },
-                  { name: 'Confluence', icon: '📝', color: '#F7FAFC' },
-                  { name: 'Cloud Engineering', icon: '🌐', color: '#EBF8FF' },
-                  { name: 'AI', icon: '🧠', color: '#F0FFF4' },
-                ].map((skill) => (
-                  <Box
-                    key={skill.name}
-                    p={{ base: 4, md: 6 }}
+            <Stack spacing={{ base: 6, md: 8 }}>
+              <Stack spacing={1} textAlign={{ base: "center", md: "left" }}>
+                <Heading as="h2" size="xl">
+                  Featured Work
+                </Heading>
+                <Text color="gray.600" fontSize={{ base: "md", md: "lg" }}>
+                  AI Prototypes
+                </Text>
+              </Stack>
+
+              <SimpleGrid columns={{ base: 1, md: 3 }} spacing={{ base: 4, md: 6 }}>
+                {technicalProjects.map((project) => (
+                  <LinkBox
+                    key={project.id}
+                    as="article"
+                    p={{ base: 5, md: 6 }}
                     bg="white"
                     borderRadius="xl"
                     borderWidth="1px"
                     borderColor="gray.200"
-                    transition="all 0.3s ease"
+                    transition="all 0.2s ease"
                     _hover={{
                       transform: "translateY(-2px)",
                       shadow: "md",
-                      borderColor: "gray.300",
-                      bg: skill.color
+                      borderColor: "gray.300"
                     }}
-                    textAlign="center"
+                    _focusWithin={{
+                      shadow: "outline",
+                      borderColor: "blue.400"
+                    }}
                   >
-                    <Text fontSize={{ base: "xl", md: "2xl" }} mb={2}>{skill.icon}</Text>
-                    <Text fontWeight="medium" fontSize={{ base: "sm", md: "md" }}>{skill.name}</Text>
-                  </Box>
+                    <Stack spacing={3} height="full">
+                      <Badge
+                        bg="blue.50"
+                        color="blue.700"
+                        px={2}
+                        py={1}
+                        rounded="md"
+                        textTransform="none"
+                        fontWeight="medium"
+                        alignSelf="flex-start"
+                      >
+                        Prototype
+                      </Badge>
+
+                      <Flex justify="space-between" align="flex-start" gap={3}>
+                        <LinkOverlay as={NextLink} href={`/projects#${project.id}`}>
+                          <Heading as="h3" size="sm" lineHeight="1.4">
+                            {project.name}
+                          </Heading>
+                        </LinkOverlay>
+                        <ArrowForwardIcon color="gray.400" mt={1} flexShrink={0} aria-hidden="true" />
+                      </Flex>
+
+                      <Text fontSize="sm" color="gray.600">
+                        {project.summary}
+                      </Text>
+
+                      <Text fontSize="xs" color="gray.500" mt="auto" pt={2}>
+                        {project.stack}
+                      </Text>
+                    </Stack>
+                  </LinkBox>
                 ))}
               </SimpleGrid>
             </Stack>
-          </Box>
-
-          {/* Quote Section */}
-          <Box 
-            as="section" 
-            bg="white" 
-            py={{ base: 10, md: 12 }}
-            px={{ base: 6, md: 8 }}
-            rounded="2xl" 
-            shadow="sm"
-            borderWidth="1px"
-            borderColor="gray.100"
-            textAlign="center"
-            position="relative"
-            _before={{
-              content: '""',
-              position: "absolute",
-              top: 0,
-              left: 0,
-              right: 0,
-              height: "4px",
-              background: "linear-gradient(to right, #E2E8F0, #CBD5E0)",
-              borderTopRadius: "2xl"
-            }}
-          >
-            <Text
-              fontSize={{ base: "xl", md: "2xl", lg: "3xl" }}
-              fontStyle="italic"
-              color="gray.700"
-              letterSpacing="wide"
-              lineHeight="tall"
-              fontWeight="medium"
-              maxW="3xl"
-              mx="auto"
-            >
-              &quot;Knowledge without action is wastefulness, and action without knowledge is foolishness.&quot;
-            </Text>
           </Box>
         </Stack>
       </Container>
