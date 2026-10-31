@@ -11,7 +11,9 @@ import {
   Divider,
   UnorderedList,
   ListItem,
+  Link,
 } from '@chakra-ui/react';
+import { ExternalLinkIcon } from '@chakra-ui/icons';
 import Navigation from '@/components/Navigation';
 import { technicalProjects, personalProjects } from '@/data/projects';
 
@@ -77,6 +79,22 @@ export default function Projects() {
                       <Text fontWeight="bold" fontSize="sm" color="gray.700">Tech stack</Text>
                       <Text mt={1} color="gray.600">{project.stack}</Text>
                     </Box>
+
+                    {project.repoUrl && (
+                      <Box>
+                        <Link
+                          href={project.repoUrl}
+                          isExternal
+                          rel="noopener noreferrer"
+                          fontSize="sm"
+                          fontWeight="medium"
+                          color="blue.600"
+                          _hover={{ color: 'blue.700', textDecoration: 'underline' }}
+                        >
+                          Read Case Study on GitHub <ExternalLinkIcon mx="2px" mb="2px" aria-hidden="true" />
+                        </Link>
+                      </Box>
+                    )}
                   </Stack>
                 </Box>
               ))}

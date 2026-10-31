@@ -10,6 +10,9 @@ export type TechnicalProject = {
   built: string;
   capabilities: string[];
   stack: string;
+  // Optional public repository. When set, the projects page shows a
+  // "Read Case Study on GitHub" link for that project.
+  repoUrl?: string;
 };
 
 export const technicalProjects: TechnicalProject[] = [
@@ -34,17 +37,18 @@ export const technicalProjects: TechnicalProject[] = [
     id: 'intelligent-fulfillment-routing-engine',
     name: 'Intelligent Fulfillment Routing Engine',
     summary:
-      'A Python decision engine that evaluates inventory, shipping costs, and delivery commitments to determine optimal fulfillment strategies.',
+      'A Python routing engine that checks inventory, shipping costs, and delivery dates to choose which warehouse should ship each order while prioritizing delivery promises.',
     problem:
       'Deciding where an order should ship from means trading off competing goals: the location with stock is not always the cheapest to ship from, and the cheapest option does not always hit the promised delivery date.',
     built:
-      'A decision engine that scores the available fulfillment options against those competing constraints and returns the best strategy, with unit tests covering the edge cases where the trade-offs conflict.',
+      'I built a Python routing engine that checks warehouse inventory, compares shipping costs, and estimates delivery dates. It uses clear business rules to prioritize delivery promises, manage limited inventory, and explain why each warehouse was selected.',
     capabilities: [
-      'Optimization logic that weighs inventory availability, shipping cost, and delivery commitments against each other.',
-      'Deterministic, inspectable decisions — the same inputs always produce the same routing outcome.',
-      'Unit-tested rules covering edge cases such as split inventory and at-risk delivery promises.',
+      'Checks warehouse inventory, shipping costs, and delivery dates before selecting where an order should ship.',
+      'Processes the most time-sensitive orders first when multiple orders compete for limited inventory.',
+      'Records why each warehouse was selected or rejected, with automated tests covering important routing scenarios and edge cases.',
     ],
-    stack: 'Python · Optimization Logic · Unit Testing',
+    stack: 'Python · Fulfillment Routing · Inventory Optimization',
+    repoUrl: 'https://github.com/alirehman2210/intelligent-fulfillment-routing',
   },
   {
     id: 'ai-customer-support-copilot',
