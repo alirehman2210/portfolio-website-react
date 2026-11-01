@@ -17,21 +17,24 @@ export type TechnicalProject = {
 
 export const technicalProjects: TechnicalProject[] = [
   {
+    // The id stays 'ai-supply-chain-exception-copilot' even though the project
+    // is now called the Shortage Copilot. It is the anchor the homepage links
+    // to and may be bookmarked, so renaming it would break those links.
     id: 'ai-supply-chain-exception-copilot',
-    name: 'AI Supply Chain Exception Copilot',
+    name: 'AI Supply Chain Shortage Copilot',
     summary:
-      'An agentic AI prototype that investigates inventory shortages, evaluates operational constraints, and recommends mitigation strategies.',
+      'An AI copilot that investigates projected ingredient shortages, checks supplier and inventory constraints, and recommends solutions for human review.',
     problem:
       'When a shortage surfaces, resolving it means manually piecing together demand forecasts, current inventory, open purchase orders, and supplier terms before anyone can decide what to do. The investigation is slow and repetitive, and the context is scattered across systems.',
     built:
-      'An agentic AI prototype that investigates flagged inventory shortages end to end. It gathers relevant operational context, evaluates constraints, and recommends mitigation options for human review and approval rather than taking action autonomously.',
+      'I built an AI copilot that investigates projected ingredient shortages by checking demand, inventory, incoming deliveries, and supplier policies. It recommends possible solutions, checks them against inventory and business restrictions, and presents them for a planner to review and approve.',
     capabilities: [
-      'Multi-step agent workflow that decomposes an exception into investigation steps instead of answering in a single pass.',
-      'Retrieval over supplier policies and operational documentation using RAG with pgvector embeddings.',
-      'Constraint evaluation across demand forecasts, inventory positions, purchase orders, and supplier policies.',
-      'Human-in-the-loop review, so recommendations are proposed for approval rather than executed automatically.',
+      'Calculates projected shortages by comparing demand with available inventory and incoming deliveries.',
+      'Uses AI to find relevant supplier rules and recommend ways to address shortages.',
+      'Checks recommendations against inventory, timing, and policy restrictions before human review.',
     ],
-    stack: 'Python · LangGraph · Claude · RAG · pgvector',
+    stack: 'Python · LangGraph · Claude · RAG · PostgreSQL/pgvector',
+    repoUrl: 'https://github.com/alirehman2210/ai-supply-chain-shortage-copilot',
   },
   {
     id: 'intelligent-fulfillment-routing-engine',
