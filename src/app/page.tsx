@@ -12,14 +12,12 @@ import {
   SimpleGrid,
   Flex,
   Button,
-  LinkBox,
-  LinkOverlay,
-  Badge,
 } from '@chakra-ui/react';
 import { ArrowForwardIcon } from '@chakra-ui/icons';
 // import { motion } from 'framer-motion';
 import Navigation from '@/components/Navigation';
-import { technicalProjects } from '@/data/projects';
+import ProjectPreviewCard from '@/components/ProjectPreviewCard';
+import { additionalProjects, flagshipProjects } from '@/data/projects';
 
 export default function Home() {
   // const fadeIn = { /* animation values */ };
@@ -217,65 +215,55 @@ export default function Home() {
                   Featured Work
                 </Heading>
                 <Text color="gray.600" fontSize={{ base: "md", md: "lg" }}>
-                  AI Prototypes
+                  Technical Projects
                 </Text>
               </Stack>
 
-              <SimpleGrid columns={{ base: 1, md: 3 }} spacing={{ base: 4, md: 6 }}>
-                {technicalProjects.map((project) => (
-                  <LinkBox
-                    key={project.id}
-                    as="article"
-                    p={{ base: 5, md: 6 }}
-                    bg="white"
-                    borderRadius="xl"
-                    borderWidth="1px"
-                    borderColor="gray.200"
-                    transition="all 0.2s ease"
-                    _hover={{
-                      transform: "translateY(-2px)",
-                      shadow: "md",
-                      borderColor: "gray.300"
-                    }}
-                    _focusWithin={{
-                      shadow: "outline",
-                      borderColor: "blue.400"
-                    }}
-                  >
-                    <Stack spacing={3} height="full">
-                      <Badge
-                        bg="blue.50"
-                        color="blue.700"
-                        px={2}
-                        py={1}
-                        rounded="md"
-                        textTransform="none"
-                        fontWeight="medium"
-                        alignSelf="flex-start"
-                      >
-                        Prototype
-                      </Badge>
-
-                      <Flex justify="space-between" align="flex-start" gap={3}>
-                        <LinkOverlay as={NextLink} href={`/projects#${project.id}`}>
-                          <Heading as="h3" size="sm" lineHeight="1.4">
-                            {project.name}
-                          </Heading>
-                        </LinkOverlay>
-                        <ArrowForwardIcon color="gray.400" mt={1} flexShrink={0} aria-hidden="true" />
-                      </Flex>
-
-                      <Text fontSize="sm" color="gray.600">
-                        {project.summary}
-                      </Text>
-
-                      <Text fontSize="xs" color="gray.500" mt="auto" pt={2}>
-                        {project.stack}
-                      </Text>
-                    </Stack>
-                  </LinkBox>
+              {/* Two documented projects get a full card each. */}
+              <SimpleGrid columns={{ base: 1, md: 2 }} spacing={{ base: 4, md: 6 }}>
+                {flagshipProjects.map((project) => (
+                  <ProjectPreviewCard key={project.id} project={project} />
                 ))}
               </SimpleGrid>
+
+              {/* Anything without a published repository is listed, not
+                  given an equally sized card with nothing in it. */}
+              {additionalProjects.length > 0 && (
+                <Box borderTopWidth="1px" borderColor="gray.200" pt={5}>
+                  <Text fontSize="xs" fontWeight="semibold" letterSpacing="wide" textTransform="uppercase" color="gray.500">
+                    Also built
+                  </Text>
+                  <Stack spacing={2} mt={3}>
+                    {additionalProjects.map((project) => (
+                      <NextLink key={project.id} href={`/projects#${project.id}`}>
+                        <Flex
+                          justify="space-between"
+                          align={{ base: 'flex-start', sm: 'flex-start' }}
+                          direction={{ base: 'column', sm: 'row' }}
+                          gap={{ base: 1, sm: 4 }}
+                          rounded="md"
+                          px={3}
+                          py={2}
+                          transition="background-color 0.15s ease"
+                          _hover={{ bg: 'gray.50' }}
+                        >
+                          <Box>
+                            <Text fontSize="sm" fontWeight="medium" color="gray.800">
+                              {project.name}
+                            </Text>
+                            <Text fontSize="xs" color="gray.600" mt="2px">
+                              {project.shortSummary}
+                            </Text>
+                          </Box>
+                          <Text fontSize="xs" color="gray.500" flexShrink={0}>
+                            {project.stack.join(' · ')}
+                          </Text>
+                        </Flex>
+                      </NextLink>
+                    ))}
+                  </Stack>
+                </Box>
+              )}
             </Stack>
           </Box>
         </Stack>
