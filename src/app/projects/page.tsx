@@ -40,7 +40,7 @@ export default function Projects() {
             </Heading>
             <Text color="gray.600" mt={2} maxW="3xl">
               Explore how I use AI, automation, and practical engineering to solve
-              complex problems in supply chain and logistics.
+              complex problems.
             </Text>
 
             <Box mt={6}>
@@ -49,7 +49,10 @@ export default function Projects() {
           </Box>
 
           {/* Additional prototypes: real, but without a published repository
-              behind them, so they get a smaller entry rather than a showcase. */}
+              behind them, so they get a smaller entry rather than a showcase.
+              Hidden while the list is empty, rather than showing a bare
+              heading with nothing under it. */}
+          {additionalProjects.length > 0 && (
           <Box
             bg="white"
             px={{ base: 5, md: 8 }}
@@ -108,6 +111,7 @@ export default function Projects() {
               ))}
             </Stack>
           </Box>
+          )}
 
           {/* Personal Projects */}
           <Box

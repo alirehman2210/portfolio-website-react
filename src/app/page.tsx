@@ -17,7 +17,7 @@ import { ArrowForwardIcon } from '@chakra-ui/icons';
 // import { motion } from 'framer-motion';
 import Navigation from '@/components/Navigation';
 import ProjectPreviewCard from '@/components/ProjectPreviewCard';
-import { additionalProjects, flagshipProjects } from '@/data/projects';
+import { flagshipProjects } from '@/data/projects';
 
 export default function Home() {
   // const fadeIn = { /* animation values */ };
@@ -219,51 +219,13 @@ export default function Home() {
                 </Text>
               </Stack>
 
-              {/* Two documented projects get a full card each. */}
-              <SimpleGrid columns={{ base: 1, md: 2 }} spacing={{ base: 4, md: 6 }}>
+              {/* Each documented project gets a full card, same treatment. */}
+              <SimpleGrid columns={{ base: 1, md: 2, lg: 3 }} spacing={{ base: 4, md: 6 }}>
                 {flagshipProjects.map((project) => (
                   <ProjectPreviewCard key={project.id} project={project} />
                 ))}
               </SimpleGrid>
 
-              {/* Anything without a published repository is listed, not
-                  given an equally sized card with nothing in it. */}
-              {additionalProjects.length > 0 && (
-                <Box borderTopWidth="1px" borderColor="gray.200" pt={5}>
-                  <Text fontSize="xs" fontWeight="semibold" letterSpacing="wide" textTransform="uppercase" color="gray.500">
-                    Also built
-                  </Text>
-                  <Stack spacing={2} mt={3}>
-                    {additionalProjects.map((project) => (
-                      <NextLink key={project.id} href={`/projects#${project.id}`}>
-                        <Flex
-                          justify="space-between"
-                          align={{ base: 'flex-start', sm: 'flex-start' }}
-                          direction={{ base: 'column', sm: 'row' }}
-                          gap={{ base: 1, sm: 4 }}
-                          rounded="md"
-                          px={3}
-                          py={2}
-                          transition="background-color 0.15s ease"
-                          _hover={{ bg: 'gray.50' }}
-                        >
-                          <Box>
-                            <Text fontSize="sm" fontWeight="medium" color="gray.800">
-                              {project.name}
-                            </Text>
-                            <Text fontSize="xs" color="gray.600" mt="2px">
-                              {project.shortSummary}
-                            </Text>
-                          </Box>
-                          <Text fontSize="xs" color="gray.500" flexShrink={0}>
-                            {project.stack.join(' · ')}
-                          </Text>
-                        </Flex>
-                      </NextLink>
-                    ))}
-                  </Stack>
-                </Box>
-              )}
             </Stack>
           </Box>
         </Stack>

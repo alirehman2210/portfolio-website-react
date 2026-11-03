@@ -30,7 +30,21 @@ export type ComparisonShowcase = {
   caption: string;
 };
 
-export type Showcase = ShortageShowcase | ComparisonShowcase;
+export type PipelineShowcase = {
+  kind: 'pipeline';
+  // The stages of the workflow, in the order they run. `role` decides how a
+  // stage is drawn: the point of the visual is which steps are a model and
+  // which are ordinary code.
+  stages: { step: number; name: string; role: 'input' | 'code' | 'ai' | 'output'; note: string }[];
+  // What the deterministic stage actually enforces, in the reader's language.
+  enforces: string[];
+  // The honest qualification on those checks: they fire on recognized wording,
+  // which is not the same as catching every phrasing a customer might use.
+  enforcesNote: string;
+  caption: string;
+};
+
+export type Showcase = ShortageShowcase | ComparisonShowcase | PipelineShowcase;
 
 export type ProjectDecision = {
   title: string;
@@ -52,8 +66,14 @@ export type FlagshipProject = {
   // The single result the homepage card leads with. Drawn from the same
   // verified test run as the showcase below it.
   cardResult: string;
+  // The line under the card result saying where it came from. Most projects
+  // use the shared default; set this where the qualification differs.
+  cardDisclosure?: string;
   // Main technologies only.
   stack: string[];
+  // A shorter stack for the homepage card, where the full list is too long.
+  // Falls back to `stack`.
+  cardStack?: string[];
   repoUrl: string;
 };
 
@@ -88,7 +108,7 @@ export const flagshipProjects: FlagshipProject[] = [
     decision: {
       title: 'AI proposes. Rules validate. People decide.',
       body:
-        'An early version suggested substituting 1,800 units when the site held 600. The policy text was already in the prompt and the model produced the larger number anyway, so the fix was a checking step it cannot talk its way past — not a firmer instruction. Nothing is actioned either way: a planner approves or rejects whatever survives the checks.',
+        'During early testing, the AI proposed substituting 1,800 units when only 600 were available. I added deterministic validation rules in Python to check inventory limits and substitution policies before recommendations reach a planner. The planner can then approve or reject the proposed solutions.',
     },
     cardResult: 'Found an 1,800-unit shortage and four validated options a planner could approve',
     stack: ['Python', 'LangGraph', 'Claude', 'RAG', 'PostgreSQL/pgvector'],
@@ -135,6 +155,50 @@ export const flagshipProjects: FlagshipProject[] = [
     stack: ['Python', 'Fulfillment Routing', 'Inventory Optimization'],
     repoUrl: 'https://github.com/alirehman2210/intelligent-fulfillment-routing',
   },
+  {
+    id: 'ai-customer-support-copilot',
+    name: 'AI Customer Support Copilot',
+    tagline:
+      'Analyzes support tickets, checks approved policies, and prepares recommendations and draft responses for human review.',
+    problem:
+      'Support agents spend time understanding incoming tickets, determining urgency, checking company policies, and preparing responses before they can help a customer.',
+    built:
+      'An AI-assisted workflow using n8n and Claude that classifies tickets, selects relevant approved knowledge, recommends next steps, applies deterministic policy checks, and prepares a draft response for an agent to review.',
+    showcase: {
+      kind: 'pipeline',
+      // The eight stages as published in the repository's own diagram.
+      stages: [
+        { step: 1, name: 'Ticket comes in', role: 'input', note: 'Subject, message, history' },
+        { step: 2, name: 'Normalize ticket', role: 'code', note: 'One consistent shape' },
+        { step: 3, name: 'Select approved knowledge', role: 'code', note: 'Keyword match, plus a safety policy' },
+        { step: 4, name: 'Draft the brief', role: 'ai', note: 'Claude Sonnet, fixed JSON fields' },
+        { step: 5, name: 'Enforce policy rules', role: 'code', note: 'Can overrule the model' },
+        { step: 6, name: 'Second opinion', role: 'ai', note: 'Claude Haiku, may fail safely' },
+        { step: 7, name: 'Build the agent view', role: 'code', note: 'Summary, actions, draft reply' },
+        { step: 8, name: 'Show agent brief', role: 'output', note: 'Draft ready for human review' },
+      ],
+      enforces: [
+        'When a duplicate charge is recognized, the ticket is set to Billing and at least High, with a "do not promise a refund" note attached',
+        'When the ticket shows the customer has contacted support before, an escalation recommendation is added',
+        'Payroll is raised to Critical only when the export is blocked and a deadline is close, not whenever payroll is mentioned',
+        'Any knowledge source the model cites that it was never given is removed from the brief',
+      ],
+      enforcesNote:
+        'The first three checks run on ticket wording the rules recognize, so they lower the chance of an unsafe recommendation rather than removing it; a ticket phrased outside those patterns may not match. The citation check does not depend on wording \u2014 it compares every source cited against the ones actually supplied.',
+      caption:
+        'Seventeen live scenarios were run against the real Claude API, covering billing, payroll, escalation, policy safeguards and replies in four languages. A further 192 offline assertions across 19 tickets check the rules without calling a model. Every ticket and policy used in testing is fictional.',
+    },
+    decision: {
+      title: 'Models draft. Rules check. Agents review.',
+      body:
+        'I used deterministic JavaScript rules to enforce important support policies instead of relying entirely on AI instructions. For example, mentioning payroll doesn’t automatically make a ticket Critical. The workflow checks whether payroll is blocked and a deadline is approaching before applying that priority.',
+    },
+    cardResult: '17 of 17 live test scenarios matched their expected outcomes.',
+    cardDisclosure: 'Tested with synthetic support tickets using the real Claude API.',
+    stack: ['n8n', 'Claude Sonnet', 'Claude Haiku', 'JavaScript', 'Policy Validation'],
+    cardStack: ['n8n', 'Claude', 'JavaScript', 'Workflow Automation'],
+    repoUrl: 'https://github.com/alirehman2210/ai-customer-support-copilot',
+  },
 ];
 
 export type AdditionalProject = {
@@ -148,17 +212,11 @@ export type AdditionalProject = {
 
 // Smaller entries. No published repository, so no verified result and no
 // case study link — and the page shows them at a size that matches.
-export const additionalProjects: AdditionalProject[] = [
-  {
-    id: 'ai-customer-support-copilot',
-    name: 'AI Customer Support Copilot',
-    summary:
-      'An AI-assisted workflow that classifies support tickets, retrieves the policy that applies, and drafts a recommended response for a person to review before anything reaches a customer.',
-    shortSummary:
-      'Classifies support requests, retrieves relevant policies, and drafts responses for human review.',
-    stack: ['n8n', 'LLMs', 'Workflow Automation'],
-  },
-];
+//
+// Empty since the AI Customer Support Copilot was published with its own
+// repository and tests, and moved up to `flagshipProjects`. The list and the
+// sections that render it are kept, guarded on length, for the next one.
+export const additionalProjects: AdditionalProject[] = [];
 
 export type PersonalProject = {
   id: string;

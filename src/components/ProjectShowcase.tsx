@@ -15,12 +15,16 @@ import {
 } from '@chakra-ui/react';
 import { ExternalLinkIcon } from '@chakra-ui/icons';
 import { flagshipProjects } from '@/data/projects';
-import { ComparisonVisual, ShortageVisual } from '@/components/ProjectVisuals';
+import { ComparisonVisual, PipelineVisual, ShortageVisual } from '@/components/ProjectVisuals';
 
 const panelIdFor = (id: string) => `${id}-panel`;
 
-function otherProject(currentId: string) {
-  return flagshipProjects.find((project) => project.id !== currentId);
+// With more than two projects there is no single "other" one, so the link at
+// the foot of a panel advances to the next and wraps at the end.
+function nextProject(currentId: string) {
+  const index = flagshipProjects.findIndex((project) => project.id === currentId);
+  if (index === -1) return undefined;
+  return flagshipProjects[(index + 1) % flagshipProjects.length];
 }
 
 function isKnownId(value: string): boolean {
@@ -128,7 +132,7 @@ export default function ProjectShowcase() {
       {/* Selectors. Each carries the project's id so the existing deep links
           still resolve to an element on the page. */}
       <SimpleGrid
-        columns={{ base: 1, md: 2 }}
+        columns={{ base: 1, md: 2, lg: 3 }}
         spacing={{ base: 3, md: 4 }}
         role="tablist"
         aria-label="Featured projects"
@@ -256,8 +260,10 @@ export default function ProjectShowcase() {
           >
             {project.showcase.kind === 'shortage' ? (
               <ShortageVisual showcase={project.showcase} />
-            ) : (
+            ) : project.showcase.kind === 'comparison' ? (
               <ComparisonVisual showcase={project.showcase} />
+            ) : (
+              <PipelineVisual showcase={project.showcase} />
             )}
           </Box>
 
@@ -319,12 +325,12 @@ export default function ProjectShowcase() {
           {/* A way back to the selectors from the foot of a long panel. It
               drives the same selection as the tabs, so the hash and the back
               button stay correct. */}
-          {otherProject(project.id) && (
+          {nextProject(project.id) && (
             <Box mt={5} pt={4} borderTopWidth="1px" borderColor="gray.100">
               <Box
                 as="button"
                 type="button"
-                onClick={() => selectAndReveal(otherProject(project.id)!.id)}
+                onClick={() => selectAndReveal(nextProject(project.id)!.id)}
                 fontSize="sm"
                 color="gray.600"
                 textAlign="left"
@@ -336,7 +342,7 @@ export default function ProjectShowcase() {
                   outlineOffset: '2px',
                 }}
               >
-                Explore the other project: {otherProject(project.id)!.name} &rarr;
+                Explore the next project: {nextProject(project.id)!.name} &rarr;
               </Box>
             </Box>
           )}

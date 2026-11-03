@@ -14,7 +14,7 @@ import { ArrowForwardIcon } from '@chakra-ui/icons';
 import NextLink from 'next/link';
 import type { FlagshipProject } from '@/data/projects';
 
-// A homepage card for one of the two documented projects.
+// A homepage card for one of the documented projects.
 //
 // It leads with a result rather than a description, because "what it did" is
 // the thing worth clicking on. The link carries the project's anchor, so the
@@ -69,12 +69,12 @@ export default function ProjectPreviewCard({ project }: { project: FlagshipProje
             {project.cardResult}
           </Text>
           <Text fontSize="xs" color="gray.500" mt={1}>
-            From its test suite, on a synthetic scenario
+            {project.cardDisclosure ?? 'From its test suite, on a synthetic scenario'}
           </Text>
         </Box>
 
         <Text fontSize="xs" color="gray.500" pt={1}>
-          {project.stack.join(' · ')}
+          {(project.cardStack ?? project.stack).join(' · ')}
         </Text>
       </Stack>
     </LinkBox>
