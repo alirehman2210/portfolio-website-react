@@ -110,7 +110,7 @@ export const flagshipProjects: FlagshipProject[] = [
       body:
         'During early testing, the AI proposed substituting 1,800 units when only 600 were available. I added deterministic validation rules in Python to check inventory limits and substitution policies before recommendations reach a planner. The planner can then approve or reject the proposed solutions.',
     },
-    cardResult: 'Found an 1,800-unit shortage and four validated options a planner could approve',
+    cardResult: 'Found a 1,800-unit shortage and four validated options a planner could approve',
     stack: ['Python', 'LangGraph', 'Claude', 'RAG', 'PostgreSQL/pgvector'],
     repoUrl: 'https://github.com/alirehman2210/ai-supply-chain-shortage-copilot',
   },
@@ -194,7 +194,7 @@ export const flagshipProjects: FlagshipProject[] = [
         'I used deterministic JavaScript rules to enforce important support policies instead of relying entirely on AI instructions. For example, mentioning payroll doesn’t automatically make a ticket Critical. The workflow checks whether payroll is blocked and a deadline is approaching before applying that priority.',
     },
     cardResult: '17 of 17 live test scenarios matched their expected outcomes.',
-    cardDisclosure: 'Tested with synthetic support tickets using the real Claude API.',
+    cardDisclosure: 'From its test suite, on synthetic tickets with the real Claude API',
     stack: ['n8n', 'Claude Sonnet', 'Claude Haiku', 'JavaScript', 'Policy Validation'],
     cardStack: ['n8n', 'Claude', 'JavaScript', 'Workflow Automation'],
     repoUrl: 'https://github.com/alirehman2210/ai-customer-support-copilot',

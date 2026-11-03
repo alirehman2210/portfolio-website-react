@@ -69,7 +69,7 @@ export default function ProjectPreviewCard({ project }: { project: FlagshipProje
             {project.cardResult}
           </Text>
           <Text fontSize="xs" color="gray.500" mt={1}>
-            {project.cardDisclosure ?? 'From its test suite, on a synthetic scenario'}
+            {project.cardDisclosure ?? 'From its test suite, on synthetic data'}
           </Text>
         </Box>
 
